@@ -25,10 +25,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'QWERTY1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://7cf2-2806-103e-1d-d3d0-dc68-5c2d-1cc7-5251.ngrok.io']
+CSRF_TRUSTED_ORIGINS = ['http://ec2-35-89-185-158.us-west-2.compute.amazonaws.com']
 
 
 # Application definition
@@ -280,8 +280,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 STATIC_URL = '/static/'
+if not DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
    os.path.join(BASE_DIR, "static")
 ]
+
 
 # MEDIA_ROOT = os.path.join(BASE_DIR, '')
